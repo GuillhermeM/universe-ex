@@ -15,6 +15,9 @@ export async function fetchMarsPhotos(
     if (camera) {
         url += `&camera=${camera}`;
     }
+    if (date) {
+        url += `&earth_date=${date}`;
+    }
     try {
         const res = await fetch(url);
         const data = await res.json();
