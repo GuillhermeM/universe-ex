@@ -5,8 +5,8 @@ import GalleryContainer from "@/components/GalleryContainer";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="text-4xl font-bold">Welcome Universe Ex 🌌</h1>
+    <main className="flex min-h-screen flex-col items-center p-10">
+      <h1 className="text-4xl font-bold mb-20">Welcome Universe Ex 🌌</h1>
       <GalleryContainer />
     </main>
   );
