@@ -81,11 +81,16 @@ export async function fetchMarsPhotos(
   }
 
   try {
-    const res = await fetch(url);
+    const res = await fetch(url, { cache: 'no-store' });
      if (!res.ok) {
       throw new Error(`Failed to fetch photos: ${res.statusText}`);
     }
     const data = await res.json();
+    if (data.photos) {
+      data.photos.forEach((photo: MarsPhoto) => {
+        photo.img_src = photo.img_src.replace('http://', 'https://');
+      });
+    }
     return data.photos || [];
   } catch (error) {
     console.error('fetchMarsPhotos error: ', error);
