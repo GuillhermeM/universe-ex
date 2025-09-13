@@ -1,3 +1,29 @@
+body {
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  min-height: 100vh;
+  min-width: 100vw;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: transparent url("/stardust.png") repeat;
+  pointer-events: none;
+  z-index: 0;
+  animation: moveStarsBg 100s linear infinite;
+  background-size: auto;
+  background-position: 0 0;
+}
+
+@keyframes moveStarsBg {
+  from { background-position: 0 0; }
+  to { background-position: 0 -1000px; }
+}
 @import "tailwindcss";
 @import "tw-animate-css";
 
