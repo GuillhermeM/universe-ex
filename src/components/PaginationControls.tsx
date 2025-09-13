@@ -1,9 +1,9 @@
 "use client";
 
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
@@ -12,60 +12,54 @@ import {
 
 interface Props {
   page: number;
-  setPage: (v: number) => void;
-  hasNextPage: boolean; // pra controlar se ainda pode avançar
+  hasNextPage: boolean;
 }
 
-export function PaginationControls({ page, setPage, hasNextPage }: Props) {
+export function PaginationControls({ page, hasNextPage }: Props) {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handlePageChange = (newPage: number) => {
+    const params = new URLSearchParams(searchParams);
+    params.set("page", newPage.toString());
+    router.push(`${pathname}?${params.toString()}`);
+  };
+
   return (
-    <Pagination>
+    <Pagination className="text-white">
       <PaginationContent>
-        {/* Botão anterior */}
         <PaginationItem>
           <PaginationPrevious
             href="#"
             onClick={(e) => {
               e.preventDefault();
-              if (page > 1) setPage(page - 1);
+              if (page > 1) {
+                handlePageChange(page - 1);
+              }
             }}
+            className={page <= 1 ? "pointer-events-none text-gray-500" : ""}
           />
         </PaginationItem>
 
-        {/* Página atual */}
         <PaginationItem>
           <PaginationLink href="#" isActive>
             {page}
           </PaginationLink>
         </PaginationItem>
 
-        {/* Próxima página */}
-        {hasNextPage && (
-          <>
-            <PaginationItem>
-              <PaginationLink
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setPage(page + 1);
-                }}
-              >
-                {page + 1}
-              </PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationEllipsis />
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationNext
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setPage(page + 1);
-                }}
-              />
-            </PaginationItem>
-          </>
-        )}
+        <PaginationItem>
+          <PaginationNext
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              if (hasNextPage) {
+                handlePageChange(page + 1);
+              }
+            }}
+            className={!hasNextPage ? "pointer-events-none text-gray-500" : ""}
+          />
+        </PaginationItem>
       </PaginationContent>
     </Pagination>
   );
