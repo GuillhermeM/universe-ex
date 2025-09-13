@@ -2,8 +2,6 @@
 
 Este projeto é uma aplicação web interativa que consome a API da NASA para buscar e exibir fotos capturadas pelos rovers em Marte (Curiosity, Opportunity e Spirit). A interface permite que os usuários filtrem as imagens por rover, câmera e data, proporcionando uma maneira envolvente de explorar o planeta vermelho.
 
-## ✨ Demonstração ao Vivo
-
 https://youtu.be/y857b7crY4k
 
 ![alt text](image.png)
