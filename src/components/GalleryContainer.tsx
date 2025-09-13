@@ -101,7 +101,7 @@ function GalleryContainer({ allRovers }: { allRovers: Rover[] }) {
             >
               &times;
             </button>
-            <Image
+            <img
               src={selectedPhoto.img_src}
               alt={`Photo by ${selectedPhoto.rover.name} with ${selectedPhoto.camera.full_name}`}
               width={800}
