@@ -6,7 +6,7 @@ Este projeto é uma aplicação web interativa que consome a API da NASA para bu
 
 **[Link para a demonstração ao vivo]** (adicione seu link aqui)
 
-![alt text](image.png)
+![alt text](![alt text](image.png))
 
 ---
 
