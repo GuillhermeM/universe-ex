@@ -13,9 +13,10 @@ import {
 interface Props {
   page: number;
   hasNextPage: boolean;
+  totalPages: number;
 }
 
-export function PaginationControls({ page, hasNextPage }: Props) {
+export function PaginationControls({ page, hasNextPage, totalPages }: Props) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
