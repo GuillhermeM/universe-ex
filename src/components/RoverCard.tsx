@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 type RoverImage = {
@@ -12,7 +13,7 @@ export function RoverCard({ src, rover, camera, date }: RoverImage) {
     <Card className="overflow-hidden shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300 border-2 border-white/30 bg-white/10 backdrop-blur-sm">
       {/* Imagem */}
       <div className="w-full h-48 overflow-hidden">
-        <img src={src} alt={rover} className="w-full h-full object-cover" />
+        <Image src={src} alt={rover} width={300} height={200} className="w-full h-full object-cover" />
       </div>
 
       {/* Cabeçalho */}
@@ -32,4 +33,3 @@ export function RoverCard({ src, rover, camera, date }: RoverImage) {
     </Card>
   );
 }
-export { Card };
