@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
+import Image from "next/image";
 import { PaginationControls } from "./PaginationControls";
 import Filters from "./Filters";
 import { fetchMarsPhotos } from "@/lib/nasa";
@@ -110,9 +111,11 @@ function GalleryContainer({ allRovers }: { allRovers: Rover[] }) {
             >
               &times;
             </button>
-            <img
+            <Image
               src={selectedPhoto.img_src}
               alt={`Photo by ${selectedPhoto.rover.name} with ${selectedPhoto.camera.full_name}`}
+              width={800}
+              height={600}
               className="w-full h-auto mb-4 rounded-md"
             />
             <div className="text-sm">
@@ -133,7 +136,6 @@ function GalleryContainer({ allRovers }: { allRovers: Rover[] }) {
       <PaginationControls
         page={parseInt(page, 10) || 1}
         hasNextPage={hasNextPage}
-        totalPages={100}
       />
     </div>
   );
