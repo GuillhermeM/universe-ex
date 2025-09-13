@@ -62,7 +62,7 @@ export default function Filters({
   return (
     <div className="flex flex-wrap justify-center items-center gap-4">
       <DatePicker
-        date={date ? new Date(date) : undefined}
+        date={date ? new Date(`${date}T00:00:00Z`) : undefined}
         onDateChange={handleDateChange}
       />
 
