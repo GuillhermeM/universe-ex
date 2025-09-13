@@ -38,11 +38,6 @@ function GalleryContainer({ allRovers }: { allRovers: Rover[] }) {
 
   useEffect(() => {
     async function loadPhotos() {
-      if (!date) {
-        setPhotos([]);
-        setLoading(false);
-        return;
-      }
       setLoading(true);
       const pageNumber = parseInt(page, 10) || 1;
       const data = await fetchMarsPhotos(rover, camera, date, pageNumber);
@@ -67,12 +62,7 @@ function GalleryContainer({ allRovers }: { allRovers: Rover[] }) {
       </div>
 
       {loading && <p className="text-center">Loading photos...</p>}
-      {!loading && !date && (
-        <p className="text-center">
-          Please select a date to search for photos.
-        </p>
-      )}
-      {!loading && date && photos.length === 0 && (
+      {!loading && photos.length === 0 && (
         <p className="text-center">
           No photos found for the selected criteria.
         </p>
@@ -111,7 +101,7 @@ function GalleryContainer({ allRovers }: { allRovers: Rover[] }) {
             >
               &times;
             </button>
-            <img
+            <Image
               src={selectedPhoto.img_src}
               alt={`Photo by ${selectedPhoto.rover.name} with ${selectedPhoto.camera.full_name}`}
               width={800}
