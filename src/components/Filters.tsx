@@ -41,8 +41,20 @@ export default function Filters({
   };
 
   const handleRoverChange = (newRover: string) => {
+    const selectedRover = allRovers.find(
+      (r) => r.name.toLowerCase() === newRover.toLowerCase()
+    );
+    const newDate = selectedRover ? selectedRover.max_date : "";
+
     const params = new URLSearchParams(searchParams);
     params.set("rover", newRover);
+
+    if (newDate) {
+      params.set("date", newDate);
+    } else {
+      params.delete("date");
+    }
+
     params.delete("camera");
     params.set("page", "1");
     router.replace(`${pathname}?${params.toString()}`);
