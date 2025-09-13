@@ -42,6 +42,9 @@ export function DatePicker({ date, onDateChange }: DatePickerProps) {
               onDateChange(selectedDate);
               setOpen(false);
             }}
+            captionLayout="dropdown"
+            fromYear={2004}
+            toYear={new Date().getFullYear()}
             initialFocus
           />
         </PopoverContent>
