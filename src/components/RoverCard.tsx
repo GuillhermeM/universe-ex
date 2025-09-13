@@ -1,22 +1,18 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 type RoverImage = {
-  src: string
-  rover: string
-  camera: string
-  date: string
-}
+  src: string;
+  rover: string;
+  camera: string;
+  date: string;
+};
 
 export function RoverCard({ src, rover, camera, date }: RoverImage) {
   return (
-  <Card className="overflow-hidden shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300 border-2 border-white/30 bg-white/10 backdrop-blur-sm">
+    <Card className="overflow-hidden shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300 border-2 border-white/30 bg-white/10 backdrop-blur-sm">
       {/* Imagem */}
       <div className="w-full h-48 overflow-hidden">
-        <img
-          src={src}
-          alt={rover}
-          className="w-full h-full object-cover"
-        />
+        <img src={src} alt={rover} className="w-full h-full object-cover" />
       </div>
 
       {/* Cabeçalho */}
@@ -34,6 +30,6 @@ export function RoverCard({ src, rover, camera, date }: RoverImage) {
         </p>
       </CardContent>
     </Card>
-  )
+  );
 }
 export { Card };
